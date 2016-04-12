@@ -15,12 +15,23 @@ using Intuit.Ipp.Security;
 
 namespace QbAdd_inDotNetWeb
 {
-   
+    /// <summary>
+    /// Controller which connects to QuickBooks and gets expenses.
+    /// This flow will make use of Data Service SDK V2 to create an OAuthRequest and connect
+    /// to Customer Data under the service context and store data in a list.
+    /// </summary>
     public class QuickBooksController : ApiController
     {
 
         private String realmId, accessToken, accessTokenSecret, consumerKey, consumerSecret;
 
+        /// <summary>
+        /// Within an OAuth session, pass a token to QuickBooks, and issue a query to make a GET call
+        /// for Customer expenses.
+        /// Puts the data returned from the service into an array.
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns>A collection of Purchases</returns>
         [HttpGet]
         public IEnumerable<Purchase> GetExpenses(int n)
         {
@@ -41,6 +52,13 @@ namespace QbAdd_inDotNetWeb
             return expenses;
         }
 
+        /// <summary>
+        /// Helper method to set token values for the current HTTP session.
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="secret"></param>
+        /// <param name="realm"></param>
+        /// <returns>An HTTP response message</returns>
         [HttpGet]
         public HttpResponseMessage SetToken(string token, string secret, string realm)
         {
@@ -51,6 +69,10 @@ namespace QbAdd_inDotNetWeb
             return Request.CreateResponse(HttpStatusCode.OK, "Success");     
         }
 
+        /// <summary>
+        /// Helper method to get the token values for the current HTTP session.
+        /// </summary>
+        /// <returns>An HTTP response message</returns>
         public HttpResponseMessage GetToken()
         {
             HttpStatusCode code = HttpStatusCode.NotFound;
@@ -64,6 +86,10 @@ namespace QbAdd_inDotNetWeb
             return Request.CreateResponse(code, message);
         }
 
+        /// <summary>
+        /// Helper method to clear cached token for the current session.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public HttpResponseMessage ClearToken()
         {
