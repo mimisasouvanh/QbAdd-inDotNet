@@ -1,4 +1,9 @@
-﻿function addChart(event) {
+﻿/*
+ * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
+
+function addChart(event) {
 
     // Run a batch operation against the Excel object model
     Excel.run(function (ctx) {
