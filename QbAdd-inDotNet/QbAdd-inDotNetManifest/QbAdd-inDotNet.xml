@@ -17,7 +17,7 @@
   <ProviderName>Rolando Jimenez</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-  <DisplayName DefaultValue="QB Add-in .Net" />
+  <DisplayName DefaultValue="QuickBooks Excel Add-in using .Net" />
   <Description DefaultValue="Connect Excel with your QuickBooks Online account"/>
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="~remoteAppUrl/Images/Button32x32.png" />
@@ -73,7 +73,7 @@
               <Group id="Contoso.Group1">
                 <!-- Label for your group. resid must point to a ShortString resource. -->
                 <Label resid="Contoso.Group1Label" />
-                <!-- Icons. Required sizes 16,32,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX. -->
+                <!-- Icons. Required sizes are 16,32,80; optional sizes are 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX. -->
                 <!-- Use PNG icons. All URLs on the resources section must use HTTPS. -->
                 <Icon>
                   <bt:Image size="16" resid="Contoso.tpicon_16x16" />

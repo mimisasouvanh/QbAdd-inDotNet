@@ -4,7 +4,6 @@ Microsoft Office Excel Add-in that integrates with QuickBooks.
 
 ## Table of Contents
 * [Change History](#change-history)
-* [Device requirements](#device-requirements)
 * [Prerequisites](#prerequisites)
 * [Azure client application registration](#azure-client-application-registration)
 * [Configure the project](#configure-the-project)
@@ -20,17 +19,36 @@ Microsoft Office Excel Add-in that integrates with QuickBooks.
 June 18, 2025:
 * Created first version of readme template.
 
-## Device requirements
-//*list hardware, or API version requirements here. For example Android samples will support specific types of hardware or API versions. 
-If your sample does not have device requirements you can skip this section.*//
 ## Prerequisites
-//*List any tools, SDKs, accounts, or other components needed before you can compile and run the sample.*//
 
-## Azure client application registration
-//*Optional. This section is only needed if the sample requires an Azure app registration. Provide instructions for how to use the Azure management portal to create a new app registration. Include images of what any permissions should look like to help developers check against their own settings.*//
+* A QuickBooks developer account
+* Visual Studio 2015
+* Office Developer Tools for Visual Studio
 
 ## Configure the project
 //*Document how to add client ids, redirects, command line configuration commands, or whatever other steps to correctly open and get the sample ready to run.*//
+Go to https://developer.intuit.com/ and sign up for a developer account.
+In the upper right hand corner, choose My Apps and select an app or click Create new app. 
+Once the app is selected, choose **Development** | **Keys** to copy the **App Token**, **OAuth Consumer Key**, and **OAuth Consumer Secret**.
+Download or clone the project.
+Open the solution file QbAdd-inDotNet.sln in Visual Studio.
+In the Web.config file, insert the values for `ConsumerKey` and `ConsumerSecret`, like this.
+
+```
+<appSettings>
+    <!-- QuickBooks Settings -->
+    <add key="ConsumerKey" value="<your OAuth Consumer Key>" />
+    <add key="ConsumerSecret" value="<your OAuth Consumer Secret>" />
+    <add key="RealmId" value="123145709687887" />
+    <add key="OauthLink" value="https://oauth.intuit.com/oauth/v1" />
+    <add key="AuthorizeUrl" value="https://workplace.intuit.com/Connect/Begin" />
+    <add key="RequestTokenUrl" value="https://oauth.intuit.com/oauth/v1/get_request_token" />
+    <add key="AccessTokenUrl" value="https://oauth.intuit.com/oauth/v1/get_access_token" />
+    <add key="ServiceContext.BaseUrl.Qbo" value="https://sandbox-quickbooks.api.intuit.com/" />
+    <add key="DeepLink" value="sandbox.qbo.intuit.com" />
+  </appSettings>
+```
+
 ## Run the project
 //*Document how to use the sample once it is running. How to log in, and get it to do something interesting.*//
 ## Understand the code
