@@ -102,17 +102,17 @@
             // Add a new worksheet to store the transactions
             var dataSheet = ctx.workbook.worksheets.add("Expenses");
 
-           //Fill white color in the sheet for improved look
+           // Fill white color in the sheet for improved look
             dataSheet.getRange("A2:M1000").format.fill.color = "white";
 
-            //Add Sheet Title
+            // Add Sheet Title
             var range = dataSheet.getRange("B1:E1");
             range.values = "Contoso Expenses";
             range.format.font.name = "Corbel";
             range.format.font.size = 30;
             range.format.font.color = "white";
             range.merge();
-            //Fill color in the brand bar
+            // Fill color in the brand bar
             dataSheet.getRange("A1:M1").format.fill.color = "#41AEBD";
 
             // Queue a command to add a new table
@@ -156,7 +156,7 @@
             // Set the sheet as active
             dataSheet.activate();
 
-            //Run the queued-up commands, and return a promise to indicate task completion
+            // Run the queued-up commands, and return a promise to indicate task completion
             return ctx.sync();
         }).catch(errorHandler);
 

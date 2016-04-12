@@ -13,7 +13,7 @@
 var fabric = fabric || {};
 /**
  *
- * @param {HTMLElement} container - the target container for an instance of MessageBanner
+ * @param {HTMLElement} container - The target container for an instance of MessageBanner
  * @constructor
  */
 fabric.MessageBanner = function (container) {
@@ -38,7 +38,7 @@ fabric.MessageBanner.prototype = (function () {
     var SMALL_BREAK_POINT = 480;
 
     /**
-     * sets styles on resize
+     * Sets styles on resize
      */
     var _onResize = function () {
         _clientWidth = _errorBanner.offsetWidth;
@@ -50,7 +50,7 @@ fabric.MessageBanner.prototype = (function () {
     };
 
     /**
-     * resize above 480 pixel breakpoint
+     * Resize above 480 pixel breakpoint
      */
     var _resizeRegular = function () {
         if ((_clientWidth - _bufferSize) > _initTextWidth && _initTextWidth < _textContainerMaxWidth) {
@@ -67,7 +67,7 @@ fabric.MessageBanner.prototype = (function () {
     };
 
     /**
-     * resize below 480 pixel breakpoint
+     * Resize below 480 pixel breakpoint
      */
     var _resizeSmall = function () {
         if (_clientWidth - (_bufferElementsWidthSmall + _closeButton.offsetWidth) > _initTextWidth) {
@@ -79,7 +79,7 @@ fabric.MessageBanner.prototype = (function () {
         _clipper.style.width = _textWidth;
     };
     /**
-     * caches elements and values of the component
+     * Caches elements and values of the component
      */
     var _cacheDOM = function (context) {
         _errorBanner = context.container;
@@ -91,7 +91,7 @@ fabric.MessageBanner.prototype = (function () {
     };
 
     /**
-     * expands component to show full error message
+     * Expands component to show full error message
      */
     var _expand = function () {
         var icon = _chevronButton.querySelector('.ms-Icon');
@@ -100,7 +100,7 @@ fabric.MessageBanner.prototype = (function () {
     };
 
     /**
-     * collapses component to only show truncated message
+     * Collapses component to only show truncated message
      */
     var _collapse = function () {
         var icon = _chevronButton.querySelector('.ms-Icon');
@@ -117,7 +117,7 @@ fabric.MessageBanner.prototype = (function () {
     };
 
     /**
-     * hides banner when close button is clicked
+     * Hides banner when close button is clicked
      */
     var _hideBanner = function () {
         if (_errorBanner.className.indexOf("hide") === -1) {
@@ -129,14 +129,14 @@ fabric.MessageBanner.prototype = (function () {
     };
 
     /**
-     * shows banner if the banner is hidden
+     * Shows banner if the banner is hidden
      */
     var _showBanner = function () {
         _errorBanner.className = "ms-MessageBanner";
     };
 
     /**
-     * sets handlers for resize and button click events
+     * Sets handlers for resize and button click events
      */
     var _setListeners = function () {
         window.addEventListener('resize', _onResize, false);
@@ -145,7 +145,7 @@ fabric.MessageBanner.prototype = (function () {
     };
 
     /**
-     * initializes component
+     * Initializes component
      */
     var init = function () {
         _cacheDOM(this);

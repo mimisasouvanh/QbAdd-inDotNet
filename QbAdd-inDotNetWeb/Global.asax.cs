@@ -15,12 +15,17 @@ namespace QbAdd_inDotNetWeb
     public class WebApiApplication : System.Web.HttpApplication
     {
 
-
+        /// <summary>
+        /// Configure the Web API
+        /// </summary>
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
 
+        /// <summary>
+        /// Sets the session state behavior for the current HTTP session to Required
+        /// </summary>
         protected void Application_PostAuthorizeRequest()
         {
             HttpContext.Current.SetSessionStateBehavior(System.Web.SessionState.SessionStateBehavior.Required);

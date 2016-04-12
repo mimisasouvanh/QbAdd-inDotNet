@@ -19,10 +19,11 @@ function addChart(event) {
                 // Get the table
                 var masterTable = ctx.workbook.tables.getItem("ExpensesTable");
 
-                //Queue a command to add the new chart
+                // Queue a command to add the new chart
                 var chartDataRangeColumn1 = masterTable.columns.getItemAt(0).getDataBodyRange();
                 var chartDataRangeColumn2 = masterTable.columns.getItemAt(1).getDataBodyRange();
-                // Comment about why we're doing this
+
+                // Insert the chart in the sheet and format the chart
                 var chartDataRange = chartDataRangeColumn1.getBoundingRect(chartDataRangeColumn2);
                 var chart = sheet.charts.add("Line", chartDataRange, Excel.ChartSeriesBy.auto);
                 chart.setPosition(sourceRange.address);
