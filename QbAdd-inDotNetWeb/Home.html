@@ -45,19 +45,26 @@
         <div class="padding">
             <div id="welcomePanel" class="ms-u-fadeIn200" style="padding: 50px">
                 <div class="ms-Grid"> 
-                    <div class="ms-Grid-row ms-font-l ms-fontWeight-light">WELCOME</div>
-                    <div class="ms-Grid-row ms-font-l ms-fontWeight-light">This add-in connects Excel with your Quickbooks online account. Please sign in to get started.</div>
+                    <div class="ms-Grid-row ms-font-l ms-fontWeight-light">WELCOME</div><br/>
+                    <div class="ms-Grid-row ms-font-l ms-fontWeight-light">This add-in connects Excel with your Quickbooks online account. Please sign in to get started.</div><br/>
                     <div class="ms-Grid-row"><a id="btnSignIn" class="intuitPlatformConnectButton" style="cursor: pointer">Connect with QuickBooks</a></div>
                 </div>                                
             </div>
 
             <div id="actionsPanel" class="ms-u-fadeIn200" style="display: none">
-                <h1 class="ms-font-l ms-fontWeight-light">Select an action below:</h1>
+                <div class="ms-Grid">
+                    <div class="ms-Grid-row ms-font-l ms-fontWeight-light">Select an action below:</div><br/>
+                    <div class="ms-Grid-row">
+                        <button id="btnGetExpenses" class="ms-Button ms-Button--command"><span class="ms-font-xxl ms-Button-icon"><i class="ms-Icon ms-Icon--bag"></i></span><span class="ms-Button-label">Get Expenses</span></button>
+                    </div><br/>
+                    <div class="ms-Grid-row">
+                        <button id="btnCreateChart" class="ms-Button ms-Button--command"><span class="ms-font-xxl ms-Button-icon"><i class="ms-Icon ms-Icon--graph"></i></span><span class="ms-Button-label">Create Chart</span></button>
+                    </div>
+                </div>
+                
                 <br />
-
-                <button id="btnGetExpenses" class="ms-Button ms-Button--command"><span class="ms-font-xxl ms-Button-icon"><i class="ms-Icon ms-Icon--bag"></i></span><span class="ms-Button-label">Get Expenses</span></button><br />
                 <br />
-                <button id="btnCreateChart" class="ms-Button ms-Button--command"><span class="ms-font-xxl ms-Button-icon"><i class="ms-Icon ms-Icon--graph"></i></span><span class="ms-Button-label">Create Chart</span></button><br />
+                <br />
                 <br />
                 <div style="position: absolute; bottom: 50px;">
                     <button id="btnSignOut" class="ms-Button ms-Button--command"><span class="ms-font-xxl ms-Button-icon"><i class="ms-Icon ms-Icon--oofReply"></i></span><span class="ms-Button-label">Sign Out</span></button>
