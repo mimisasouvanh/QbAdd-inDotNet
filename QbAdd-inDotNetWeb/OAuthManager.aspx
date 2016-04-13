@@ -15,7 +15,6 @@
             <%if (null != HttpContext.Current.Session["accessToken"]) { %>
                 <script>
                     window.location.href = 'https://localhost:44300/close.aspx';
-                    //window.location.href = 'https://qbaddin.azurewebsites.net/close.aspx' + window.location.search;
                 </script>
             <% } %>
         </div>
