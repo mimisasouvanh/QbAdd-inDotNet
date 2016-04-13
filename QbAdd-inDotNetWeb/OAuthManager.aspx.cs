@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,6 +19,9 @@ namespace QbAdd_inDotNetWeb
 {
     public partial class OAuthManager : System.Web.UI.Page
     {
+        /// <summary>
+        /// Stores configuration settings for OAuth.
+        /// </summary>
         private string requestTokenUrl = ConfigurationManager.AppSettings["RequestTokenUrl"];
         private string accessTokenUrl = ConfigurationManager.AppSettings["AccessTokenUrl"];
         private string authorizeUrl = ConfigurationManager.AppSettings["AuthorizeUrl"];
@@ -21,7 +29,6 @@ namespace QbAdd_inDotNetWeb
         private string consumerKey = ConfigurationManager.AppSettings["ConsumerKey"];
         private string consumerSecret = ConfigurationManager.AppSettings["ConsumerSecret"];
         private string oauthCallbackUrl = "https://localhost:44300/OauthManager.aspx";
-        //private string oauthCallbackUrl = "https://qbaddin.azurewebsites.net/OauthManager.aspx";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,6 +47,9 @@ namespace QbAdd_inDotNetWeb
 
         }
 
+        /// <summary>
+        /// Starts the authentication process.
+        /// </summary>
         private void FireAuth()
         {
 
@@ -52,6 +62,9 @@ namespace QbAdd_inDotNetWeb
             HttpContext.Current.Response.Redirect(authUrl);
         }
 
+        /// <summary>
+        /// Gets the token for the current session.
+        /// </summary>
         private void ReadToken()
         {
             HttpContext.Current.Session["oauthToken"] = Request.QueryString["oauth_token"].ToString(); ;
@@ -59,7 +72,7 @@ namespace QbAdd_inDotNetWeb
             HttpContext.Current.Session["realm"] = Request.QueryString["realmId"].ToString();
             HttpContext.Current.Session["dataSource"] = Request.QueryString["dataSource"].ToString();
             //Stored in a session for demo purposes.
-            //Production applications should securely store the Access Token
+            //Production applications should securely store the access token.
             IOAuthSession clientSession = CreateSession();
             IToken accessToken = clientSession.ExchangeRequestTokenForAccessToken((IToken)HttpContext.Current.Session["requestToken"], HttpContext.Current.Session["oauthVerifyer"].ToString());
             HttpContext.Current.Session["accessToken"] = accessToken.Token;
@@ -67,6 +80,10 @@ namespace QbAdd_inDotNetWeb
 
         }
 
+        /// <summary>
+        /// Creates a new OAuth session.
+        /// </summary>
+        /// <returns></returns>
         protected IOAuthSession CreateSession()
         {
             var consumerContext = new OAuthConsumerContext

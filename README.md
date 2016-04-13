@@ -2,10 +2,12 @@
 
 Microsoft Office Excel Add-in that integrates with QuickBooks.
 
+Your Excel Add-in can connect to a service like QuickBooks and import data into your Excel spreadsheet. 
+This Excel Add-in demonstrates how to connect to QuickBooks, gets sample expense data from a sandbox account provided by QuickBooks, **Sandbox Company_US_1**, and imports the sample data into a spreadsheet. The add-in also provides a button to create a chart from the sample data.
+
 ## Table of Contents
-* [Change History](#change-history)
+
 * [Prerequisites](#prerequisites)
-* [Azure client application registration](#azure-client-application-registration)
 * [Configure the project](#configure-the-project)
 * [Run the project](#run-the-project)
 * [Understand the code](#understand-the-code)
@@ -13,33 +15,26 @@ Microsoft Office Excel Add-in that integrates with QuickBooks.
 * [Questions and comments](#questions-and-comments)
 * [Additional resources](#additional-resources)
 
-## Change History
-//*Date and description each time significant change is made. Example below:*//
-
-June 18, 2025:
-* Created first version of readme template.
-
 ## Prerequisites
 
-* A QuickBooks developer account
-* Visual Studio 2015
-* Office Developer Tools for Visual Studio
+* A [QuickBooks developer](https://developer.intuit.com/) account
+* [Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
+* [Office Developer Tools for Visual Studio](https://www.visualstudio.com/en-us/features/office-tools-vs.aspx)
 
 ## Configure the project
-//*Document how to add client ids, redirects, command line configuration commands, or whatever other steps to correctly open and get the sample ready to run.*//
-Go to https://developer.intuit.com/ and sign up for a developer account.
-In the upper right hand corner, choose My Apps and select an app or click Create new app. 
-Once the app is selected, choose **Development** | **Keys** to copy the **App Token**, **OAuth Consumer Key**, and **OAuth Consumer Secret**.
-Download or clone the project.
-Open the solution file QbAdd-inDotNet.sln in Visual Studio.
-In the Web.config file, insert the values for `ConsumerKey` and `ConsumerSecret`, like this.
+
+1. Go to https://developer.intuit.com/ and sign up for a developer account.
+2. In the upper right hand corner, choose **My Apps** and select an app or click **Create new app**. 
+3. Once the app is selected, choose **Development** | **Keys** to copy **OAuth Consumer Key** and **OAuth Consumer Secret**.
+4. Download or clone the project.
+5. Open the solution file **QbAdd-inDotNet.sln** in Visual Studio.
+6. In Visual Studio, open **Web.config** and insert the values for `ConsumerKey` and `ConsumerSecret`, like this.
 
 ```
 <appSettings>
     <!-- QuickBooks Settings -->
-    <add key="ConsumerKey" value="<your OAuth Consumer Key>" />
-    <add key="ConsumerSecret" value="<your OAuth Consumer Secret>" />
-    <add key="RealmId" value="123145709687887" />
+    <add key="ConsumerKey" value="insert your OAuth Consumer Key here" />
+    <add key="ConsumerSecret" value="insert your OAuth Consumer Secret here" />
     <add key="OauthLink" value="https://oauth.intuit.com/oauth/v1" />
     <add key="AuthorizeUrl" value="https://workplace.intuit.com/Connect/Begin" />
     <add key="RequestTokenUrl" value="https://oauth.intuit.com/oauth/v1/get_request_token" />
@@ -50,20 +45,44 @@ In the Web.config file, insert the values for `ConsumerKey` and `ConsumerSecret`
 ```
 
 ## Run the project
-//*Document how to use the sample once it is running. How to log in, and get it to do something interesting.*//
+
+1. Press F5 to run the project.
+2. Once Excel opens in the desktop, launch the add-in by selecting the command from the ribbon.<br>![QuickBooks Excel Add-in command button](readme-images/readme_command_image.PNG)
+
+3. The command button launches a task pane in Excel. Click **Connect to QuickBooks** to launch the QuickBooks sign-in window.<br>![Task pane sign in](readme-images/readme_image_taskpane.PNG)
+
+4. An error window will open in Visual Studio. Click **Continue** and navigate back to Excel.<br>![Visual Studio error window](readme-images/readme_image_error.PNG)
+
+5. Sign in to QuickBooks with your QuickBooks developer account.<br>![QuickBooks sign in dialog window](readme-images/readme_image_signin.PNG)
+
+6. Click **Authorize** to allow QuickBooks to send data to the add-in.<br>![QuickBooks authorize dialog window](readme-images/readme_image_authorize.PNG)
+
+7. The task pane will display two actions to choose from. <br>![Select action task pane](readme-images/readme_image_action.PNG)
+
+8. Choose **Get Expenses** to import expenses from QuickBooks into a spreadsheet. The spreadsheet will look like this: <br>![Expenses spreadsheet](readme-images/readme_image_expenses.PNG)
+
+9. To insert a chart, choose **Create Chart**. A chart will be inserted into the spreadsheet.<br>![Insert chart](readme-images/readme_image_chart.PNG)
+
 ## Understand the code
-//*Optional. Provide information about what code files the developer should study to understand how they can use it in their own code, or how the sample works. 
-Note that you can use deep links to the code samples or specific line numbers using this [linking mechanism](http://stackoverflow.com/questions/23821235/how-to-link-to-specific-line-number-on-github). *//
+
+* [Home.html](QbAdd-inDotNetWeb/home.html) - Defines the task pane page on start up, and after the user has logged in.
+* [Home.js](QbAdd-inDotNetWeb/home.js) - Handles user interaction for sign in, sign out, get expenses, and insert chart. Here, the `dialogDisplayAsync` API is called to open a dialog window for the user to sign in to QuickBooks.
+* [QbAdd-inDotNet.xml](QbAdd-inDotNet/QbAdd-inDotNetManifest/QbAdd-inDotNet.xml) - This is the manifest file for the add-in. 
+* [QuickBooksController.cs](QbAdd-inDotNetWeb/Controllers/QuickBooksController.cs) - This is where the add-in gets expense data from QuickBooks.
+* [FunctionFile.js](QbAdd-inDotNetWeb/Functions/FunctionFile.js) - Contains the methods to add a chart to Excel.
+* [OAuthManager.aspx.cs](QbAdd-inDotNetWeb/OAuthManager.aspx.cs) - Handles sign in to QuickBooks from the dialog API.
+
 ## Questions and comments
-//*Use the following boilerplate. Fill in your sample name below, and the correct link to your issues section*//
-We'd love to get your feedback on the *YOUR SAMPLE NAME* sample. You can send your feedback to us in the *Issues* section of this repository. //br//
+
+We'd love to get your feedback on the *QuickBooks Excel Add-in with .Net* sample. You can send your feedback to us in the *Issues* section of this repository. 
 Questions about Office 365 development in general should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Make sure that your questions are tagged with [Office365] and [API].
+
 ## Additional resources
-//*Provide links to other samples or relevant documentation. Some common ones listed below.*//
 
 * [Office 365 APIs documentation](http://msdn.microsoft.com/office/office365/howto/platform-development-overview)
 * [Microsoft Office 365 API Tools](https://visualstudiogallery.msdn.microsoft.com/a15b85e6-69a7-4fdf-adda-a38066bb5155)
 * [Office Dev Center](http://dev.office.com/)
 * [Office 365 APIs starter projects and code samples](http://msdn.microsoft.com/en-us/office/office365/howto/starter-projects-and-code-samples)
+
 ## Copyright
 Copyright (c) 2016 Microsoft. All rights reserved.

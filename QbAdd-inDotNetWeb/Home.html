@@ -24,26 +24,35 @@
     <script src="Functions/FunctionFile.js" type="text/javascript"></script>
 
     <!-- For the Office UI Fabric, go to http://aka.ms/office-ui-fabric to learn more. -->
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.min.css">
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.components.min.css">
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
 
     <!-- To enable the offline use of Office UI Fabric, use: -->
     <!-- link rel="stylesheet" href="/Content/fabric.min.css" -->
     <!-- link rel="stylesheet" href="/Content/fabric.components.min.css" -->
 </head>
-<body>
+<body class="ms-font-m">
+    <div id="header">
+        <div class="ms-Grid header ms-bgColor-green">
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12">
+                    <div class="ms-font-xl ms-fontColor-white" style="line-height: 2em">QuickBooks Expenses</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="content-main">
         <div class="padding">
             <div id="welcomePanel" class="ms-u-fadeIn200" style="padding: 50px">
-                <h1 class="ms-font-l ms-fontWeight-light">Welcome!</h1>
-                <br />
-                <h1 class="ms-font-l ms-fontWeight-light">This add-in connects Excel with your Quickbooks Online account, please sign-in to get started.</h1>
-                <br />
-                <a id="btnSignIn" class="intuitPlatformConnectButton" style="cursor: pointer">Connect with QuickBooks</a>
+                <div class="ms-Grid"> 
+                    <div class="ms-Grid-row ms-font-l ms-fontWeight-light">WELCOME</div>
+                    <div class="ms-Grid-row ms-font-l ms-fontWeight-light">This add-in connects Excel with your Quickbooks online account. Please sign in to get started.</div>
+                    <div class="ms-Grid-row"><a id="btnSignIn" class="intuitPlatformConnectButton" style="cursor: pointer">Connect with QuickBooks</a></div>
+                </div>                                
             </div>
 
             <div id="actionsPanel" class="ms-u-fadeIn200" style="display: none">
-                <h1 class="ms-font-l ms-fontWeight-light">Please select an action below:</h1>
+                <h1 class="ms-font-l ms-fontWeight-light">Select an action below:</h1>
                 <br />
 
                 <button id="btnGetExpenses" class="ms-Button ms-Button--command"><span class="ms-font-xxl ms-Button-icon"><i class="ms-Icon ms-Icon--bag"></i></span><span class="ms-Button-label">Get Expenses</span></button><br />
@@ -57,9 +66,9 @@
         </div>
     </div>
     <div class="footer">
-        <div class="ms-Grid ms-bgColor-themeSecondary">
+        <div class="ms-Grid ms-bgColor-green">
             <div class="ms-Grid-row">
-                <div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"> <div class="ms-font-xl ms-fontColor-white">Contoso</div></div>
+                <div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"> <div class="ms-font-xl ms-fontColor-white">Contoso Expenses</div></div>
             </div>
         </div>
     </div>
