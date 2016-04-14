@@ -35,7 +35,6 @@
     function signIn() {
         var signInUrl = "https://appcenter.intuit.com/Connect/SessionStart?datasources=quickbooks&grantUrl="
             + encodeURIComponent("https://localhost:44300/OAuthManager.aspx?connect=true");
-            //+ encodeURIComponent("https://qbaddin.azurewebsites.net/OAuthManager.aspx?connect=true");
         Office.context.ui.displayDialogAsync(signInUrl,
             { height: 70, width: 40},
             function (result) {
