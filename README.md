@@ -1,4 +1,4 @@
-# QuickBooks Excel Add-in with .Net
+# Excel Add-in with ASP.NET and QuickBooks
 
 Microsoft Office Excel Add-in that integrates with QuickBooks.
 
@@ -75,7 +75,7 @@ Configure your app at developer.intuit.com to get started.
 
 ## Questions and comments
 
-We'd love to get your feedback on the *QuickBooks Excel Add-in with .Net* sample. You can send your feedback to us in the *Issues* section of this repository. 
+We'd love to get your feedback on the *Excel Add-in with ASPNET and QuickBooks* sample. You can send your feedback to us in the *Issues* section of this repository. 
 Questions about Office 365 development in general should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Make sure that your questions are tagged with [Office365] and [API].
 
 ## Additional resources
